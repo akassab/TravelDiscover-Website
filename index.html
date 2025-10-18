@@ -9,26 +9,26 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="ac-navbar">
-        <div class="ac-nav-container">
-            <div class="ac-logo">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
                 <i class="fas fa-compass"></i>
                 <span>TravelDiscover</span>
             </div>
-            <ul class="ac-nav-menu" id="acNavMenu">
-                <li><a href="index.html" class="ac-nav-active">Home</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <li class="ac-dropdown">
-                    <a href="#" class="ac-dropdown-toggle">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <ul class="ac-dropdown-menu">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Destinations <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
                         <li><a href="#beaches">Beaches</a></li>
                         <li><a href="#temples">Temples</a></li>
                         <li><a href="#countries">Countries</a></li>
                     </ul>
                 </li>
             </ul>
-            <div class="ac-hamburger" id="acHamburger">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -37,32 +37,34 @@
     </nav>
 
     <!-- Hero Section with Introduction -->
-    <section class="ac-hero">
-        <div class="ac-hero-content">
-            <h1>Discover Your Next Adventure</h1>
-            <p class="ac-intro-text">Welcome to TravelDiscover, your ultimate companion for exploring the world's most breathtaking destinations. Whether you're seeking pristine beaches, ancient temples, or cultural experiences across different countries, we provide personalized recommendations to make your travel dreams come true.</p>
-            <a href="#recommendations" class="ac-cta-button">Explore Destinations</a>
-        </div>
-        <div class="ac-hero-image">
-            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Travel destinations" />
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Your Next Adventure</h1>
+                <p class="intro-text">Welcome to TravelDiscover, your ultimate companion for exploring the world's most breathtaking destinations. Whether you're seeking pristine beaches, ancient temples, or cultural experiences across different countries, we provide personalized recommendations to make your travel dreams come true.</p>
+                <a href="#recommendations" class="cta-button">Explore Destinations</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Travel destinations" />
+            </div>
         </div>
     </section>
 
     <!-- Recommendations Section -->
-    <section id="recommendations" class="ac-recommendations">
-        <div class="ac-container">
+    <section id="recommendations" class="recommendations">
+        <div class="container">
             <h2>Featured Destinations</h2>
             
             <!-- Beach Recommendations -->
-            <div id="beaches" class="ac-recommendation-category">
+            <div id="beaches" class="recommendation-category">
                 <h3><i class="fas fa-umbrella-beach"></i> Beach Paradise</h3>
-                <div class="ac-recommendation-grid">
-                    <div class="ac-recommendation-card">
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tropical beach paradise" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>Maldives Beach Resort</h4>
                             <p>Experience crystal-clear waters and pristine white sand beaches in this tropical paradise. Perfect for honeymoons and luxury getaways.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -72,12 +74,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ac-recommendation-card">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sunset beach view" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>Santorini Sunset Beach</h4>
                             <p>Witness the most spectacular sunsets over the Aegean Sea while enjoying the unique volcanic black sand beaches of Santorini.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -91,15 +93,15 @@
             </div>
 
             <!-- Temple Recommendations -->
-            <div id="temples" class="ac-recommendation-category">
+            <div id="temples" class="recommendation-category">
                 <h3><i class="fas fa-place-of-worship"></i> Sacred Temples</h3>
-                <div class="ac-recommendation-grid">
-                    <div class="ac-recommendation-card">
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1553215619-30c8edfba1e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Angkor Wat temple complex" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>Angkor Wat, Cambodia</h4>
                             <p>Explore the magnificent temple complex of Angkor Wat, a UNESCO World Heritage site and architectural marvel of the Khmer Empire.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -109,12 +111,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ac-recommendation-card">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Japanese temple in autumn" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>Kiyomizu-dera, Japan</h4>
                             <p>Visit this iconic wooden temple in Kyoto, famous for its stunning autumn colors and panoramic views of the ancient capital.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -128,15 +130,15 @@
             </div>
 
             <!-- Country Recommendations -->
-            <div id="countries" class="ac-recommendation-category">
+            <div id="countries" class="recommendation-category">
                 <h3><i class="fas fa-globe-americas"></i> Country Highlights</h3>
-                <div class="ac-recommendation-grid">
-                    <div class="ac-recommendation-card">
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Swiss Alps landscape" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>Switzerland Adventures</h4>
                             <p>Discover the breathtaking Swiss Alps, pristine lakes, and charming villages. Perfect for skiing, hiking, and scenic train journeys.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -146,12 +148,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ac-recommendation-card">
+                    <div class="recommendation-card">
                         <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="New Zealand landscape" />
-                        <div class="ac-card-content">
+                        <div class="card-content">
                             <h4>New Zealand Wonders</h4>
                             <p>Experience the diverse landscapes of New Zealand, from stunning fjords to rolling green hills and adventure sports capitals.</p>
-                            <div class="ac-rating">
+                            <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -167,17 +169,17 @@
     </section>
 
     <!-- Footer -->
-    <footer class="ac-footer">
-        <div class="ac-container">
-            <div class="ac-footer-content">
-                <div class="ac-footer-section">
-                    <div class="ac-logo">
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
                         <i class="fas fa-compass"></i>
                         <span>TravelDiscover</span>
                     </div>
                     <p>Your ultimate travel companion for discovering amazing destinations worldwide.</p>
                 </div>
-                <div class="ac-footer-section">
+                <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
@@ -185,9 +187,9 @@
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="ac-footer-section">
+                <div class="footer-section">
                     <h4>Follow Us</h4>
-                    <div class="ac-social-links">
+                    <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -195,7 +197,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ac-footer-bottom">
+            <div class="footer-bottom">
                 <p>&copy; 2025 TravelDiscover. All rights reserved.</p>
             </div>
         </div>

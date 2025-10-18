@@ -3,8 +3,8 @@
  * Main script file for interactive functionality
  */
 
-// Global variables following camelCase convention with 'ac' prefix
-const acElements = {
+// Global variables following camelCase convention
+const elements = {
     hamburger: null,
     navMenu: null,
     contactForm: null,
@@ -14,59 +14,56 @@ const acElements = {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    acInitializeElements();
-    acSetupEventListeners();
-    acInitializeAnimations();
-    acCreateScrollTopButton();
+    initializeElements();
+    setupEventListeners();
+    initializeAnimations();
+    createScrollTopButton();
 });
 
 /**
  * Initialize DOM elements
  */
-function acInitializeElements() {
-    acElements.hamburger = document.getElementById('acHamburger');
-    acElements.navMenu = document.getElementById('acNavMenu');
-    acElements.contactForm = document.getElementById('acContactForm');
-    acElements.successMessage = document.getElementById('acSuccessMessage');
+function initializeElements() {
+    elements.hamburger = document.getElementById('hamburger');
+    elements.navMenu = document.getElementById('navMenu');
+    elements.contactForm = document.getElementById('contactForm');
+    elements.successMessage = document.getElementById('successMessage');
 }
 
 /**
  * Set up all event listeners
  */
-function acSetupEventListeners() {
+function setupEventListeners() {
     // Mobile navigation toggle
-    if (acElements.hamburger && acElements.navMenu) {
-        acElements.hamburger.addEventListener('click', acToggleMobileNav);
+    if (elements.hamburger && elements.navMenu) {
+        elements.hamburger.addEventListener('click', toggleMobileNav);
     }
 
     // Contact form submission
-    if (acElements.contactForm) {
-        acElements.contactForm.addEventListener('submit', acHandleFormSubmission);
+    if (elements.contactForm) {
+        elements.contactForm.addEventListener('submit', handleFormSubmission);
     }
 
     // Smooth scrolling for anchor links
-    acSetupSmoothScrolling();
+    setupSmoothScrolling();
 
     // Window scroll events
-    window.addEventListener('scroll', acHandleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     // Dropdown navigation for mobile
-    acSetupDropdownNavigation();
+    setupDropdownNavigation();
 
     // Recommendation card interactions
-    acSetupRecommendationCards();
+    setupRecommendationCards();
 }
 
 /**
  * Toggle mobile navigation menu
  */
-function acToggleMobileNav() {
-    if (acElements.hamburger && acElements.navMenu) {
-        acElements.hamburger.classList.toggle('ac-active');
-        acElements.navMenu.classList.toggle('ac-active');
-        
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = acElements.navMenu.classList.contains('ac-active') ? 'hidden' : '';
+function toggleMobileNav() {
+    if (elements.hamburger && elements.navMenu) {
+        elements.hamburger.classList.toggle('active');
+        elements.navMenu.classList.toggle('active');
     }
 }
 
@@ -74,33 +71,33 @@ function acToggleMobileNav() {
  * Handle contact form submission
  * @param {Event} event - Form submission event
  */
-function acHandleFormSubmission(event) {
+function handleFormSubmission(event) {
     event.preventDefault();
     
     // Get form data
-    const formData = acGetFormData();
+    const formData = getFormData();
     
     // Validate form
-    if (!acValidateForm(formData)) {
+    if (!validateForm(formData)) {
         return;
     }
     
     // Simulate form submission
-    acSubmitForm(formData);
+    submitForm(formData);
 }
 
 /**
  * Get form data from contact form
  * @returns {Object} Form data object
  */
-function acGetFormData() {
+function getFormData() {
     return {
-        firstName: document.getElementById('acFirstName')?.value || '',
-        lastName: document.getElementById('acLastName')?.value || '',
-        email: document.getElementById('acEmail')?.value || '',
-        subject: document.getElementById('acSubject')?.value || '',
-        message: document.getElementById('acMessage')?.value || '',
-        newsletter: document.getElementById('acNewsletter')?.checked || false
+        firstName: document.getElementById('firstName')?.value || '',
+        lastName: document.getElementById('lastName')?.value || '',
+        email: document.getElementById('email')?.value || '',
+        subject: document.getElementById('subject')?.value || '',
+        message: document.getElementById('message')?.value || '',
+        newsletter: document.getElementById('newsletter')?.checked || false
     };
 }
 
@@ -109,12 +106,12 @@ function acGetFormData() {
  * @param {Object} formData - Form data to validate
  * @returns {boolean} Validation result
  */
-function acValidateForm(formData) {
+function validateForm(formData) {
     const requiredFields = ['firstName', 'lastName', 'email', 'subject', 'message'];
     
     for (const field of requiredFields) {
         if (!formData[field] || formData[field].trim() === '') {
-            acShowErrorMessage(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
+            showErrorMessage(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
             return false;
         }
     }
@@ -122,7 +119,7 @@ function acValidateForm(formData) {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-        acShowErrorMessage('Please enter a valid email address.');
+        showErrorMessage('Please enter a valid email address.');
         return false;
     }
     
@@ -133,9 +130,9 @@ function acValidateForm(formData) {
  * Submit form data (simulated)
  * @param {Object} formData - Form data to submit
  */
-function acSubmitForm(formData) {
+function submitForm(formData) {
     // Show loading state
-    const submitButton = acElements.contactForm.querySelector('.ac-submit-button');
+    const submitButton = elements.contactForm.querySelector('.submit-button');
     const originalText = submitButton.innerHTML;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitButton.disabled = true;
@@ -146,13 +143,12 @@ function acSubmitForm(formData) {
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
         
-        // Show success message
-        acShowSuccessMessage();
-        
         // Reset form
-        acElements.contactForm.reset();
+        elements.contactForm.reset();
         
-        // Log form data (in real app, this would be sent to server)
+        // Show success message
+        showSuccessMessage();
+        
         console.log('Form submitted:', formData);
     }, 2000);
 }
@@ -160,19 +156,11 @@ function acSubmitForm(formData) {
 /**
  * Show success message
  */
-function acShowSuccessMessage() {
-    if (acElements.successMessage && acElements.contactForm) {
-        acElements.contactForm.style.display = 'none';
-        acElements.successMessage.classList.add('ac-show');
-        
-        // Scroll to success message
-        acElements.successMessage.scrollIntoView({ behavior: 'smooth' });
-        
-        // Hide success message and show form again after 5 seconds
-        setTimeout(() => {
-            acElements.successMessage.classList.remove('ac-show');
-            acElements.contactForm.style.display = 'block';
-        }, 5000);
+function showSuccessMessage() {
+    if (elements.successMessage && elements.contactForm) {
+        elements.contactForm.style.display = 'none';
+        elements.successMessage.classList.add('show');
+        elements.successMessage.style.display = 'block';
     }
 }
 
@@ -180,22 +168,22 @@ function acShowSuccessMessage() {
  * Show error message
  * @param {string} message - Error message to display
  */
-function acShowErrorMessage(message) {
+function showErrorMessage(message) {
     // Create or update error message element
-    let errorElement = document.querySelector('.ac-error-message');
+    let errorElement = document.querySelector('.error-message');
     
     if (!errorElement) {
         errorElement = document.createElement('div');
-        errorElement.className = 'ac-error-message';
+        errorElement.className = 'error-message';
         errorElement.style.cssText = `
             background: #f8d7da;
             color: #721c24;
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             margin-bottom: 1rem;
             border: 1px solid #f5c6cb;
         `;
-        acElements.contactForm.insertBefore(errorElement, acElements.contactForm.firstChild);
+        elements.contactForm.insertBefore(errorElement, elements.contactForm.firstChild);
     }
     
     errorElement.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
@@ -204,7 +192,7 @@ function acShowErrorMessage(message) {
     // Remove error message after 5 seconds
     setTimeout(() => {
         if (errorElement && errorElement.parentNode) {
-            errorElement.parentNode.removeChild(errorElement);
+            errorElement.remove();
         }
     }, 5000);
 }
@@ -212,23 +200,17 @@ function acShowErrorMessage(message) {
 /**
  * Set up smooth scrolling for anchor links
  */
-function acSetupSmoothScrolling() {
+function setupSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                event.preventDefault();
-                
-                // Close mobile menu if open
-                if (acElements.navMenu && acElements.navMenu.classList.contains('ac-active')) {
-                    acToggleMobileNav();
-                }
-                
-                // Smooth scroll to target
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -241,54 +223,43 @@ function acSetupSmoothScrolling() {
 /**
  * Handle window scroll events
  */
-function acHandleScroll() {
+function handleScroll() {
     const scrollPosition = window.pageYOffset;
     
     // Update navigation background opacity
-    const navbar = document.querySelector('.ac-navbar');
+    const navbar = document.querySelector('.navbar');
     if (navbar) {
         if (scrollPosition > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
         } else {
-            navbar.style.background = '#ffffff';
-            navbar.style.backdropFilter = 'none';
+            navbar.style.backgroundColor = 'var(--white)';
         }
     }
     
     // Show/hide scroll to top button
-    if (acElements.scrollTopButton) {
+    if (elements.scrollTopButton) {
         if (scrollPosition > 300) {
-            acElements.scrollTopButton.classList.add('ac-visible');
+            elements.scrollTopButton.classList.add('visible');
         } else {
-            acElements.scrollTopButton.classList.remove('ac-visible');
+            elements.scrollTopButton.classList.remove('visible');
         }
     }
     
     // Trigger fade-in animations
-    acTriggerFadeInAnimations();
+    triggerFadeInAnimations();
 }
 
 /**
  * Set up dropdown navigation for mobile
  */
-function acSetupDropdownNavigation() {
-    const dropdownToggles = document.querySelectorAll('.ac-dropdown-toggle');
+function setupDropdownNavigation() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     
     dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768) {
-                event.preventDefault();
-                const dropdown = this.parentElement;
-                const menu = dropdown.querySelector('.ac-dropdown-menu');
-                
-                if (menu) {
-                    menu.style.position = 'static';
-                    menu.style.opacity = menu.style.opacity === '1' ? '0' : '1';
-                    menu.style.visibility = menu.style.visibility === 'visible' ? 'hidden' : 'visible';
-                    menu.style.transform = 'none';
-                }
-            }
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.parentNode;
+            dropdown.classList.toggle('active');
         });
     });
 }
@@ -296,21 +267,17 @@ function acSetupDropdownNavigation() {
 /**
  * Set up recommendation card interactions
  */
-function acSetupRecommendationCards() {
-    const cards = document.querySelectorAll('.ac-recommendation-card');
+function setupRecommendationCards() {
+    const cards = document.querySelectorAll('.recommendation-card');
     
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-        
-        // Add click interaction for mobile
         card.addEventListener('click', function() {
-            acShowRecommendationDetails(this);
+            showRecommendationDetails(this);
+        });
+        
+        // Add hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.cursor = 'pointer';
         });
     });
 }
@@ -319,17 +286,18 @@ function acSetupRecommendationCards() {
  * Show recommendation details (placeholder functionality)
  * @param {HTMLElement} card - The clicked recommendation card
  */
-function acShowRecommendationDetails(card) {
+function showRecommendationDetails(card) {
     const title = card.querySelector('h4')?.textContent || 'Destination';
     const description = card.querySelector('p')?.textContent || 'Amazing destination';
     
     // Create modal or alert (simplified for demo)
-    const modal = acCreateModal(title, description);
+    const modal = createModal(title, description);
     document.body.appendChild(modal);
     
     // Show modal with animation
     setTimeout(() => {
-        modal.classList.add('ac-visible');
+        modal.style.opacity = '1';
+        modal.querySelector('div').style.transform = 'scale(1)';
     }, 10);
 }
 
@@ -339,9 +307,9 @@ function acShowRecommendationDetails(card) {
  * @param {string} content - Modal content
  * @returns {HTMLElement} Modal element
  */
-function acCreateModal(title, content) {
+function createModal(title, content) {
     const modal = document.createElement('div');
-    modal.className = 'ac-modal';
+    modal.className = 'modal';
     modal.style.cssText = `
         position: fixed;
         top: 0;
@@ -373,7 +341,7 @@ function acCreateModal(title, content) {
     modalContent.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h2 style="color: #2C5F7C; margin: 0;">${title}</h2>
-            <button class="ac-close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6C757D;">
+            <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6C757D;">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -388,13 +356,13 @@ function acCreateModal(title, content) {
     modal.appendChild(modalContent);
     
     // Close modal functionality
-    const closeButton = modalContent.querySelector('.ac-close-modal');
+    const closeButton = modalContent.querySelector('.close-modal');
     const closeModal = () => {
         modal.style.opacity = '0';
         modalContent.style.transform = 'scale(0.9)';
         setTimeout(() => {
             if (modal.parentNode) {
-                modal.parentNode.removeChild(modal);
+                modal.remove();
             }
         }, 300);
     };
@@ -408,7 +376,7 @@ function acCreateModal(title, content) {
     
     // Add animation class when visible
     modal.addEventListener('transitionend', function() {
-        if (modal.classList.contains('ac-visible')) {
+        if (modal.style.opacity === '1') {
             modalContent.style.transform = 'scale(1)';
         }
     });
@@ -419,26 +387,26 @@ function acCreateModal(title, content) {
 /**
  * Initialize fade-in animations
  */
-function acInitializeAnimations() {
-    const elementsToAnimate = document.querySelectorAll('.ac-recommendation-card, .ac-team-member, .ac-value-card, .ac-faq-item');
+function initializeAnimations() {
+    const elementsToAnimate = document.querySelectorAll('.recommendation-card, .team-member, .value-card, .faq-item');
     
     elementsToAnimate.forEach(element => {
-        element.classList.add('ac-fade-in');
+        element.classList.add('fade-in');
     });
     
     // Trigger initial check
-    acTriggerFadeInAnimations();
+    triggerFadeInAnimations();
 }
 
 /**
  * Trigger fade-in animations for visible elements
  */
-function acTriggerFadeInAnimations() {
-    const elements = document.querySelectorAll('.ac-fade-in');
+function triggerFadeInAnimations() {
+    const elements = document.querySelectorAll('.fade-in');
     
     elements.forEach(element => {
-        if (acIsElementInViewport(element)) {
-            element.classList.add('ac-visible');
+        if (isElementInViewport(element)) {
+            element.classList.add('visible');
         }
     });
 }
@@ -448,133 +416,99 @@ function acTriggerFadeInAnimations() {
  * @param {HTMLElement} element - Element to check
  * @returns {boolean} True if element is in viewport
  */
-function acIsElementInViewport(element) {
+function isElementInViewport(element) {
     const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    
     return (
         rect.top >= 0 &&
-        rect.top <= windowHeight * 0.8 // Trigger when 80% visible
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
 
 /**
  * Create and add scroll to top button
  */
-function acCreateScrollTopButton() {
-    const button = document.createElement('button');
-    button.className = 'ac-scroll-top';
-    button.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    button.setAttribute('aria-label', 'Scroll to top');
+function createScrollTopButton() {
+    const scrollButton = document.createElement('button');
+    scrollButton.className = 'scroll-top';
+    scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    scrollButton.setAttribute('aria-label', 'Scroll to top');
     
-    button.addEventListener('click', function() {
+    scrollButton.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
     
-    document.body.appendChild(button);
-    acElements.scrollTopButton = button;
+    document.body.appendChild(scrollButton);
+    elements.scrollTopButton = scrollButton;
 }
 
 /**
  * Handle recommendation filtering (for future enhancement)
  * @param {string} category - Category to filter by
  */
-function acFilterRecommendations(category) {
-    const cards = document.querySelectorAll('.ac-recommendation-card');
-    const categories = document.querySelectorAll('.ac-recommendation-category');
-    
-    if (category === 'all') {
-        categories.forEach(cat => cat.style.display = 'block');
-    } else {
-        categories.forEach(cat => {
-            const categoryId = cat.id;
-            cat.style.display = categoryId === category ? 'block' : 'none';
-        });
-    }
+function filterRecommendations(category) {
+    console.log('Filtering by category:', category);
+    // Future implementation
 }
 
 /**
  * Search functionality (for future enhancement)
  * @param {string} query - Search query
  */
-function acSearchDestinations(query) {
-    const cards = document.querySelectorAll('.ac-recommendation-card');
-    const lowerQuery = query.toLowerCase();
-    
-    cards.forEach(card => {
-        const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
-        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
-        
-        if (title.includes(lowerQuery) || description.includes(lowerQuery)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+function searchDestinations(query) {
+    console.log('Searching for:', query);
+    // Future implementation
 }
 
 /**
  * Load more recommendations (for future enhancement)
  */
-function acLoadMoreRecommendations() {
-    // Placeholder for loading more recommendations
+function loadMoreRecommendations() {
     console.log('Loading more recommendations...');
+    // Future implementation
 }
 
 /**
  * Initialize theme switching (for future enhancement)
  */
-function acInitializeTheme() {
-    const savedTheme = localStorage.getItem('acTheme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+function initializeTheme() {
+    // Future implementation
 }
 
 /**
  * Toggle theme (for future enhancement)
  */
-function acToggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('acTheme', newTheme);
+function toggleTheme() {
+    console.log('Toggling theme...');
+    // Future implementation
 }
 
 // Export functions for potential use in other scripts
 window.TravelDiscover = {
-    toggleMobileNav: acToggleMobileNav,
-    filterRecommendations: acFilterRecommendations,
-    searchDestinations: acSearchDestinations,
-    loadMoreRecommendations: acLoadMoreRecommendations,
-    toggleTheme: acToggleTheme
+    toggleMobileNav: toggleMobileNav,
+    filterRecommendations: filterRecommendations,
+    searchDestinations: searchDestinations,
+    loadMoreRecommendations: loadMoreRecommendations,
+    toggleTheme: toggleTheme
 };
 
 // Handle page resize
 window.addEventListener('resize', function() {
-    // Close mobile menu on resize to desktop
-    if (window.innerWidth > 768 && acElements.navMenu && acElements.navMenu.classList.contains('ac-active')) {
-        acToggleMobileNav();
+    // Close mobile menu if window is resized to desktop size
+    if (window.innerWidth > 768) {
+        if (elements.navMenu && elements.navMenu.classList.contains('active')) {
+            toggleMobileNav();
+        }
     }
 });
 
 // Add loading state management
 window.addEventListener('load', function() {
-    // Hide loading spinner if present
-    const loader = document.querySelector('.ac-loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            if (loader.parentNode) {
-                loader.parentNode.removeChild(loader);
-            }
-        }, 300);
-    }
-    
-    // Trigger initial animations
-    setTimeout(acTriggerFadeInAnimations, 100);
+    document.body.classList.add('loaded');
 });
 
 console.log('TravelDiscover JavaScript initialized successfully!');
