@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TravelDiscover</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="ac-navbar">
+        <div class="ac-nav-container">
+            <div class="ac-logo">
+                <i class="fas fa-compass"></i>
+                <span>TravelDiscover</span>
+            </div>
+            <ul class="ac-nav-menu" id="acNavMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html" class="ac-nav-active">Contact Us</a></li>
+                <li class="ac-dropdown">
+                    <a href="#" class="ac-dropdown-toggle">Destinations <i class="fas fa-chevron-down"></i></a>
+                    <ul class="ac-dropdown-menu">
+                        <li><a href="index.html#beaches">Beaches</a></li>
+                        <li><a href="index.html#temples">Temples</a></li>
+                        <li><a href="index.html#countries">Countries</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="ac-hamburger" id="acHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="ac-contact-hero">
+        <div class="ac-container">
+            <h1>Get In Touch</h1>
+            <p class="ac-hero-subtitle">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
+            <div style="background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #ffc107;">
+                <p style="margin: 0; font-size: 0.9rem; font-style: italic;">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Demo Notice:</strong> This is a demonstration website. All contact information is fictional and form submissions will not be processed.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="ac-contact-content">
+        <div class="ac-container">
+            <div class="ac-contact-wrapper">
+                <!-- Contact Form -->
+                <div class="ac-contact-form-section">
+                    <h2><i class="fas fa-envelope"></i> Send Us a Message</h2>
+                    <form class="ac-contact-form" id="acContactForm">
+                        <div class="ac-form-row">
+                            <div class="ac-form-group">
+                                <label for="acFirstName">First Name *</label>
+                                <input type="text" id="acFirstName" name="firstName" required>
+                            </div>
+                            <div class="ac-form-group">
+                                <label for="acLastName">Last Name *</label>
+                                <input type="text" id="acLastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="ac-form-group">
+                            <label for="acEmail">Email Address *</label>
+                            <input type="email" id="acEmail" name="email" required>
+                        </div>
+                        
+                        <div class="ac-form-group">
+                            <label for="acSubject">Subject *</label>
+                            <select id="acSubject" name="subject" required>
+                                <option value="">Please select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="recommendation">Travel Recommendation</option>
+                                <option value="booking">Booking Assistance</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="support">Technical Support</option>
+                            </select>
+                        </div>
+                        
+                        <div class="ac-form-group">
+                            <label for="acMessage">Message *</label>
+                            <textarea id="acMessage" name="message" rows="6" placeholder="Tell us about your travel plans or how we can help you..." required></textarea>
+                        </div>
+                        
+                        <div class="ac-form-group ac-checkbox-group">
+                            <input type="checkbox" id="acNewsletter" name="newsletter">
+                            <label for="acNewsletter">I would like to receive travel tips and destination recommendations via email</label>
+                        </div>
+                        
+                        <button type="submit" class="ac-submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div class="ac-success-message" id="acSuccessMessage">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="ac-contact-info-section">
+                    <h2><i class="fas fa-info-circle"></i> Contact Information</h2>
+                    
+                    <div class="ac-contact-info-card">
+                        <div class="ac-contact-item">
+                            <div class="ac-contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ac-contact-details">
+                                <h3>Email (Demo Only)</h3>
+                                <p>demo@example-travel-site.fake</p>
+                                <p>support@fake-demo-site.example</p>
+                                <small style="color: #dc3545; font-style: italic;">*These are not real email addresses</small>
+                            </div>
+                        </div>
+                        
+                        <div class="ac-contact-item">
+                            <div class="ac-contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="ac-contact-details">
+                                <h3>Phone (Demo Only)</h3>
+                                <p>+1 (555) 000-DEMO</p>
+                                <p>Mon-Fri: 9AM-6PM PST</p>
+                                <small style="color: #dc3545; font-style: italic;">*This is not a real phone number</small>
+                            </div>
+                        </div>
+                        
+                        <div class="ac-contact-item">
+                            <div class="ac-contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ac-contact-details">
+                                <h3>Address (Demo Only)</h3>
+                                <p>123 Demo Street</p>
+                                <p>Example City, CA 90210</p>
+                                <small style="color: #dc3545; font-style: italic;">*This is not a real address</small>
+                            </div>
+                        </div>
+                        
+                        <div class="ac-contact-item">
+                            <div class="ac-contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ac-contact-details">
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                                <p>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="ac-social-section">
+                        <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
+                        <div class="ac-social-links">
+                            <a href="#" class="ac-social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="ac-social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="ac-social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="ac-social-link youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="ac-faq-section">
+        <div class="ac-container">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="ac-faq-grid">
+                <div class="ac-faq-item">
+                    <h3>How do I get personalized travel recommendations?</h3>
+                    <p>Simply browse our featured destinations or contact us with your preferences, budget, and travel dates. Our team will provide customized recommendations.</p>
+                </div>
+                <div class="ac-faq-item">
+                    <h3>Do you offer booking services?</h3>
+                    <p>We provide recommendations and can connect you with trusted travel partners for bookings. Contact us for assistance with your travel arrangements.</p>
+                </div>
+                <div class="ac-faq-item">
+                    <h3>How quickly will you respond to my inquiry?</h3>
+                    <p>We aim to respond to all inquiries within 24 hours during business days. For urgent matters, please call our support line.</p>
+                </div>
+                <div class="ac-faq-item">
+                    <h3>Are your recommendations free?</h3>
+                    <p>Yes! Our basic travel recommendations and destination guides are completely free. Premium planning services are available for a fee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ac-footer">
+        <div class="ac-container">
+            <div class="ac-footer-content">
+                <div class="ac-footer-section">
+                    <div class="ac-logo">
+                        <i class="fas fa-compass"></i>
+                        <span>TravelDiscover</span>
+                    </div>
+                    <p>Your ultimate travel companion for discovering amazing destinations worldwide.</p>
+                </div>
+                <div class="ac-footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="ac-footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="ac-social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ac-footer-bottom">
+                <p>&copy; 2025 TravelDiscover. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
